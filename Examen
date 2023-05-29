@@ -1,23 +1,24 @@
 --Ejercicio 1--
 --Tabla alumnos--
-CREATE TABLE alumnosTesoem( 
-    idAlumno NUMBER(6),
-    matricula NUMBER(12),
-    nombre NVARCHAR2(50),
-    apellidoPaterno NVARCHAR2(50),
-    apellidoMaterno NVARCHAR2(50),
-    carrera NVARCHAR2(50),
-    grupo NVARCHAR2(10),
-    semestre NUMBER(2),
-    edificio NVARCHAR2(3),
-    promedio NUMBER(4,2)
+CREATE TABLE alumnosTesoem( --creacion de la tabla alumnosTesoem--
+    idAlumno NUMBER(6),     --definicion del campo idAlumno con tipo de dato NUMBER (6) para numeros --
+    matricula NUMBER(12),   --definicion del campo idAlumno con tipo de dato NUMBER (12) para numeros --
+    nombre NVARCHAR2(50),    --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    apellidoPaterno NVARCHAR2(50),  --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    apellidoMaterno NVARCHAR2(50),  --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    carrera NVARCHAR2(50),  --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    grupo NVARCHAR2(10),    --definicion del campo matricula con tipo de dato NVARCHAR2 (10) para caracteres alfanumericos--
+    semestre NUMBER(2),     -definicion del campo idAlumno con tipo de dato NUMBER (2) para numeros --
+    edificio NVARCHAR2(3),  --definicion del campo matricula con tipo de dato NVARCHAR2 (3) para caracteres alfanumericos--
+    promedio NUMBER(4,2)    -definicion del campo idAlumno con tipo de dato NUMBER (2) para numeros con cifras decimales --
     );
 
         --Procedimiento Almacenado para insertar datos de los alumnos dl tecnologico--
-CREATE OR REPLACE PROCEDURE paInsertAlumnos
-    (aId in number default 0 || null, 
-    aMatricula in number default  0  , 
-    aNombre in varchar2 default 'Nombre'  , 
+       --TODOS LOS CAMPOS DEL SIGUIENTE PROCEDIMIENTO ALMCENADO QUE CUENTAN CUN UNA "a" al principio del campo, tiene el significado de "alumno"--
+CREATE OR REPLACE PROCEDURE paInsertAlumnos     -- Declaracion o reemplazo en caso de que exista del procedimiento almacenado paInsertAlumno--
+    (aId in number default 0 || null,       --Declaracion del parametro de entrada aId de tipo NUMBER con un valor predeterminado de 0--
+    aMatricula in number default  0  ,       --Declaracion del parametro de entrada aMatricula de tipo NUMBER con un valor predeterminado de 0--
+    aNombre in varchar2 default 'Nombre'  ,     --Declaracion del parametro de entrada aNombre de tipo VARCHAR2 con una cadema prederteminada de 'Nombre'--
     aApellidoPaterno in varchar2 default 'Apellido Paterno' ,
     aApellidoMaterno in varchar2 default 'Apellido Materno' || null,
     aCarrera in varchar2 default 'Carrera' , 
