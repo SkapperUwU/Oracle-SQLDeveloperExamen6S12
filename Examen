@@ -42,89 +42,94 @@ CREATE TABLE sistemas( --creacion de la tabla sistemas--
     matricula NUMBER(12),	--definicion del campo matricula con tipo de dato NUMBER (12) para numeros --
     nombre NVARCHAR2(50),	--definicion del campo nombre con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
     apellido NVARCHAR2(100), --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
-    grupo NVARCHAR2(10),
-    semestre NUMBER(2),
-    edificio NVARCHAR2(3)
+    grupo NVARCHAR2(10),    --definicion del campo grupo con tipo de dato NVARCHAR2 (10) para caracteres alfanumericos--
+    semestre NUMBER(2),     --definicion del campo semestre con tipo de dato NUMBER (2) para numeros --
+    edificio NVARCHAR2(3)   --definicion del campo edificio con tipo de dato NVARCHAR2 (3) para caracteres alfanumericos--
 );
 
         --Procedimiento Almacenado para insertar datos de los alumnos de sistemas--
+        -TODOS LOS CAMPOS DEL SIGUIENTE PROCEDIMIENTO ALMCENADO QUE CUENTAN CUN UNA "a" al principio del campo, tiene el significado de "alumno" y una "S" al final tiene el significado de "Sistemas"--
 CREATE OR REPLACE PROCEDURE paInsertAlumnosSistemas
-    (aIdS in number default 0 || null, 
-    aMatriculaS in number default  0  , 
-    aNombreS in varchar2 default 'Nombre'  , 
-    aApellidoS in varchar2 default 'Apellidos' ,
-    aGrupoS in varchar2 default 'Grupo' ,
-    semestreS in number default  0,
-    aEdificioS in varchar2 default '#') 
+    (aIdS in number default 0 || null,      --Declaracion del parametro de entrada aIdS de tipo NUMBER con un valor predeterminado de 0  y una pipe en donde declara que el campo puede ser nulo--
+    aMatriculaS in number default  0  ,     -Declaracion del parametro de entrada aMatriculaS de tipo NUMBER con un valor predeterminado de 0--
+    aNombreS in varchar2 default 'Nombre' ,      --Declaracion del parametro de entrada aNombreS de tipo VARCHAR2 con una cadena prederteminada de 'Nombre'-- 
+    aApellidoS in varchar2 default 'Apellidos' , --Declaracion del parametro de entrada aApellidoS de tipo VARCHAR2 con una cadena prederteminada de 'Apellidos'--
+    aGrupoS in varchar2 default 'Grupo' ,       --Declaracion del parametro de entrada aGrupoS de tipo VARCHAR2 con una cadena prederteminada de 'Grupo'--
+    aSemestreS in number default  0,     --Declaracion del parametro de entrada aSemestreS de tipo NUMBER con un valor predeterminado de 0--
+    aEdificioS in varchar2 default '#')  --Declaracion del parametro de entrada aEdificioS de tipo VARCHAR2 con una cadena prederteminada de '#'--
 as
-begin
-    insert into sistemas values (aIdS, aMatriculaS, aNombreS, aApellidoS, aGrupoS, semestreS, aEdificioS);
-end;
+begin   --Inicio del bloque de instrucciones a realizar--
+    insert into sistemas values (aIdS, aMatriculaS, aNombreS, aApellidoS, aGrupoS, semestreS, aEdificioS); --Insercion de datos en la tabla sistemas con valores definidos en el PA--
+end;    --Fin del bloque de instrucciones a realizar--
 
-EXECUTE paInsertAlumnosSistemas;
-EXECUTE paInsertAlumnosSistemas (1, 206020047, 'Ariana Estefania', 'Rodriguez Monroy', '6S12',6,'B');
+EXECUTE paInsertAlumnosSistemas;    --Ejecucion del bloque de instrucciones paInsertAlumnosSistemas--
+EXECUTE paInsertAlumnosSistemas (1, 206020047, 'Ariana Estefania', 'Rodriguez Monroy', '6S12',6,'B'); -Ejecucion del bloque de instrucciones SISTEMAS con valores propuestos por el usuario--
 
-SELECT * FROM sistemas;
+SELECT * FROM sistemas; --Seleccion de la tabla Sistemas--
 
 --Tabla Gastronomia TABLA 2 DE LAS CARRERAS--
-CREATE TABLE gastronomia(
-    id NUMBER(6),
-    matricula NUMBER(12),
-    nombre NVARCHAR2(50),
-    apellido NVARCHAR2(100),
-    grupo NVARCHAR2(10),
-    semestre NVARCHAR2(2),
-    edificio NVARCHAR2(3)
+CREATE TABLE gastronomia( --creacion de la tabla sistemas--
+    id NUMBER(6), 	--definicion del campo id con tipo de dato NUMBER (6) para numeros --
+    matricula NUMBER(12),	--definicion del campo matricula con tipo de dato NUMBER (12) para numeros --
+    nombre NVARCHAR2(50),	--definicion del campo nombre con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    apellido NVARCHAR2(100), --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    grupo NVARCHAR2(10),    --definicion del campo grupo con tipo de dato NVARCHAR2 (10) para caracteres alfanumericos--
+    semestre NUMBER(2),     --definicion del campo semestre con tipo de dato NUMBER (2) para numeros --
+    edificio NVARCHAR2(3)   --definicion del campo edificio con tipo de dato NVARCHAR2 (3) para caracteres alfanumericos--
 );
+
 
         --Procedimiento Almacenado para insertar datos de los alumnos de gastronomia--
-CREATE OR REPLACE PROCEDURE paInsertAlumnosSGastronomia
-    (aIdG in number default 0 || null, 
-    aMatriculaG in number default  0  , 
-    aNombreG in varchar2 default 'Nombre'  , 
-    aApellidoG in varchar2 default 'Apellidos' ,
-    aGrupoG in varchar2 default 'Grupo' ,
-    asemestreG in number default  0  ,
-    aEdificioG in varchar2 default '#') 
+        --TODOS LOS CAMPOS DEL SIGUIENTE PROCEDIMIENTO ALMCENADO QUE CUENTAN CUN UNA "a" al principio del campo, tiene el significado de "alumno" y una "G" al final tiene el significado de "Gastronomia"--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosGastronomia
+    (aIdG in number default 0 || null,      --Declaracion del parametro de entrada aIdG de tipo NUMBER con un valor predeterminado de 0  y una pipe en donde declara que el campo puede ser nulo--
+    aMatriculaG in number default  0  ,     -Declaracion del parametro de entrada aMatriculaG de tipo NUMBER con un valor predeterminado de 0--
+    aNombreG in varchar2 default 'Nombre' ,      --Declaracion del parametro de entrada aNombreG de tipo VARCHAR2 con una cadena prederteminada de 'Nombre'-- 
+    aApellidoG in varchar2 default 'Apellidos' , --Declaracion del parametro de entrada aApellidoG de tipo VARCHAR2 con una cadena prederteminada de 'Apellidos'--
+    aGrupoG in varchar2 default 'Grupo' ,       --Declaracion del parametro de entrada aGrupoG de tipo VARCHAR2 con una cadena prederteminada de 'Grupo'--
+    aSemestreG in number default  0,     --Declaracion del parametro de entrada aSemestreG de tipo NUMBER con un valor predeterminado de 0--
+    aEdificioG in varchar2 default '#')  --Declaracion del parametro de entrada aEdificioG de tipo VARCHAR2 con una cadena prederteminada de '#'--
 as
-begin
-    insert into gastronomia values (aIdG, aMatriculaG, aNombreG, aApellidoG, aGrupoG, asemestreG, aEdificioG);
-end;
+begin   --Inicio del bloque de instrucciones a realizar--
+    insert into gastronomia values (aIdG, aMatriculaG, aNombreG, aApellidoG, aGrupoG, semestreG, aEdificioG); --Insercion de datos en la tabla gastronomia con valores definidos en el PA--
+end;    --Fin del bloque de instrucciones a realizar--
 
-EXECUTE paInsertAlumnosSGastronomia;
-EXECUTE paInsertAlumnosSGastronomia (1, 0000000000, 'asdfgh', 'asdgjgf egthuv ','3jy5', 2, 'C');
+EXECUTE paInsertAlumnosSGastronomia;    --Ejecucion del bloque de instrucciones paInsertAlumnosSGastronomia--
+EXECUTE paInsertAlumnosSGastronomia (1, 0000000000, 'asdfgh', 'asdgjgf egthuv ','3jy5', 2, 'C'); --Ejecucion del bloque de instrucciones paInsertAlumnosSGastronomia con valores propuestos por el usuario--
 
-SELECT * FROM gastronomia;
+SELECT * FROM gastronomia;   --Seleccion de la tabla gastronomia--
 
 --Tabla Contaduria TABLA 3 DE LAS CARRRERAS--
-CREATE TABLE contaduria(
-    id NUMBER(6),
-    matricula NUMBER(12),
-    nombre NVARCHAR2(50),
-    apellido NVARCHAR2(100),
-    grupo NVARCHAR2(10),
-    semestre number(2),
-    edificio NVARCHAR2(3)
+CREATE TABLE contaduria( --creacion de la tabla conaduria--
+    id NUMBER(6), 	--definicion del campo id con tipo de dato NUMBER (6) para numeros --
+    matricula NUMBER(12),	--definicion del campo matricula con tipo de dato NUMBER (12) para numeros --
+    nombre NVARCHAR2(50),	--definicion del campo nombre con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    apellido NVARCHAR2(100), --definicion del campo matricula con tipo de dato NVARCHAR2 (50) para caracteres alfanumericos--
+    grupo NVARCHAR2(10),    --definicion del campo grupo con tipo de dato NVARCHAR2 (10) para caracteres alfanumericos--
+    semestre NUMBER(2),     --definicion del campo semestre con tipo de dato NUMBER (2) para numeros --
+    edificio NVARCHAR2(3)   --definicion del campo edificio con tipo de dato NVARCHAR2 (3) para caracteres alfanumericos--
 );
 
+
         --Procedimiento Almacenado para insertar datos de los alumnos de Contador publico--
+         --TODOS LOS CAMPOS DEL SIGUIENTE PROCEDIMIENTO ALMCENADO QUE CUENTAN CUN UNA "a" al principio del campo, tiene el significado de "alumno" y una "C" al final tiene el significado de "Contaduria"--
 CREATE OR REPLACE PROCEDURE paInsertAlumnosContaduria
-    (aIdC in number default 0 || null, 
-    aMatriculaC in number default  0  , 
-    aNombreC in varchar2 default 'Nombre'  , 
-    aApellidoC in varchar2 default 'Apellidos' ,
-    aGrupoC in varchar2 default 'Grupo' ,
-    asemestreC in number default 0,
-    aEdificioC in varchar2 default '#') 
+    (aIdC in number default 0 || null,      --Declaracion del parametro de entrada aIdC de tipo NUMBER con un valor predeterminado de 0  y una pipe en donde declara que el campo puede ser nulo--
+    aMatriculaC in number default  0  ,     -Declaracion del parametro de entrada aMatriculaC de tipo NUMBER con un valor predeterminado de 0--
+    aNombreC in varchar2 default 'Nombre' ,      --Declaracion del parametro de entrada aNombreC de tipo VARCHAR2 con una cadena prederteminada de 'Nombre'-- 
+    aApellidoC in varchar2 default 'Apellidos' , --Declaracion del parametro de entrada aApellidoC de tipo VARCHAR2 con una cadena prederteminada de 'Apellidos'--
+    aGrupoC in varchar2 default 'Grupo' ,       --Declaracion del parametro de entrada aGrupoC de tipo VARCHAR2 con una cadena prederteminada de 'Grupo'--
+    aSemestreC in number default  0,     --Declaracion del parametro de entrada aSemestreC de tipo NUMBER con un valor predeterminado de 0--
+    aEdificioC in varchar2 default '#')  --Declaracion del parametro de entrada aEdificioC de tipo VARCHAR2 con una cadena prederteminada de '#'--
 as
-begin
-    insert into contaduria values (aIdC, aMatriculaC, aNombreC, aApellidoC, aGrupoC, asemestreC, aEdificioC);
-end;
+begin   --Inicio del bloque de instrucciones a realizar--
+    insert into contaduria values (aIdC, aMatriculaC, aNombreC, aApellidoC, aGrupoC, semestreC, aEdificioC); --Insercion de datos en la tabla contaduria con valores definidos en el PA--
+end;    --Fin del bloque de instrucciones a realizar--
 
-EXECUTE paInsertAlumnosContaduria;
-EXECUTE paInsertAlumnosContaduria (1, 0000000000, 'weryuio', 'zxcvnmjh sdrhb', 'sebu6', 6, 'I');
+EXECUTE paInsertAlumnosContaduria;  --Ejecucion del bloque de instrucciones paInsertAlumnosContaduria--
+EXECUTE paInsertAlumnosContaduria (1, 0000000000, 'weryuio', 'zxcvnmjh sdrhb', 'sebu6', 6, 'I'); --Ejecucion del bloque de instrucciones --Ejecucion del bloque de instrucciones paInsertAlumnosContaduria con valores propuestos por el usuario-- con valores propuestos por el usuario--
 
-SELECT * FROM contaduria;
+SELECT * FROM contaduria;     --Seleccion de la tabla contaduria--
 
 --Tabla Ambiental TABLA 4 DE LAS CARRERAS--
 CREATE TABLE ambiental(
