@@ -1,0 +1,354 @@
+--Ejercicio 1--
+--Tabla alumnos--
+CREATE TABLE alumnosTesoem( 
+    idAlumno NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellidoPaterno NVARCHAR2(50),
+    apellidoMaterno NVARCHAR2(50),
+    carrera NVARCHAR2(50),
+    grupo NVARCHAR2(10),
+    semestre NUMBER(2),
+    edificio NVARCHAR2(3),
+    promedio NUMBER(4,2)
+    );
+
+        --Procedimiento Almacenado para insertar datos de los alumnos dl tecnologico--
+CREATE OR REPLACE PROCEDURE paInsertAlumnos
+    (aId in number default 0 || null, 
+    aMatricula in number default  0  , 
+    aNombre in varchar2 default 'Nombre'  , 
+    aApellidoPaterno in varchar2 default 'Apellido Paterno' ,
+    aApellidoMaterno in varchar2 default 'Apellido Materno' || null,
+    aCarrera in varchar2 default 'Carrera' , 
+    aGrupo in varchar2 default 'Grupo' ,
+    aSemestre in number DEFAULT 0 ,
+    aEdificio in varchar2 default '#' ,
+    aPromedio in number default 0 ) 
+as
+begin
+    insert into alumnosTesoem values (aId, aMatricula, aNombre, aApellidoPaterno, aApellidoMaterno, aCarrera, aGrupo, aSemestre, aEdificio, aPromedio);
+end;
+
+EXECUTE paInsertAlumnos;
+EXECUTE paInsertAlumnos (1, 206020047, 'Ariana Estefania', 'Rodriguez', 'Monroy', 'Sistemas', '6S12', 6, 'B', 90.0);
+
+SELECT * FROM alumnosTesoem;
+
+--Tabla de Sistemas TABLA 1 DE LAS CARRERAS --
+CREATE TABLE sistemas(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre NUMBER(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de sistemas--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosSistemas
+    (aIdS in number default 0 || null, 
+    aMatriculaS in number default  0  , 
+    aNombreS in varchar2 default 'Nombre'  , 
+    aApellidoS in varchar2 default 'Apellidos' ,
+    aGrupoS in varchar2 default 'Grupo' ,
+    semestreS in number default  0,
+    aEdificioS in varchar2 default '#') 
+as
+begin
+    insert into sistemas values (aIdS, aMatriculaS, aNombreS, aApellidoS, aGrupoS, semestreS, aEdificioS);
+end;
+
+EXECUTE paInsertAlumnosSistemas;
+EXECUTE paInsertAlumnosSistemas (1, 206020047, 'Ariana Estefania', 'Rodriguez Monroy', '6S12',6,'B');
+
+SELECT * FROM sistemas;
+
+--Tabla Gastronomia TABLA 2 DE LAS CARRERAS--
+CREATE TABLE gastronomia(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre NVARCHAR2(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de gastronomia--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosSGastronomia
+    (aIdG in number default 0 || null, 
+    aMatriculaG in number default  0  , 
+    aNombreG in varchar2 default 'Nombre'  , 
+    aApellidoG in varchar2 default 'Apellidos' ,
+    aGrupoG in varchar2 default 'Grupo' ,
+    asemestreG in number default  0  ,
+    aEdificioG in varchar2 default '#') 
+as
+begin
+    insert into gastronomia values (aIdG, aMatriculaG, aNombreG, aApellidoG, aGrupoG, asemestreG, aEdificioG);
+end;
+
+EXECUTE paInsertAlumnosSGastronomia;
+EXECUTE paInsertAlumnosSGastronomia (1, 0000000000, 'asdfgh', 'asdgjgf egthuv ','3jy5', 2, 'C');
+
+SELECT * FROM gastronomia;
+
+--Tabla Contaduria TABLA 3 DE LAS CARRRERAS--
+CREATE TABLE contaduria(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Contador publico--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosContaduria
+    (aIdC in number default 0 || null, 
+    aMatriculaC in number default  0  , 
+    aNombreC in varchar2 default 'Nombre'  , 
+    aApellidoC in varchar2 default 'Apellidos' ,
+    aGrupoC in varchar2 default 'Grupo' ,
+    asemestreC in number default 0,
+    aEdificioC in varchar2 default '#') 
+as
+begin
+    insert into contaduria values (aIdC, aMatriculaC, aNombreC, aApellidoC, aGrupoC, asemestreC, aEdificioC);
+end;
+
+EXECUTE paInsertAlumnosContaduria;
+EXECUTE paInsertAlumnosContaduria (1, 0000000000, 'weryuio', 'zxcvnmjh sdrhb', 'sebu6', 6, 'I');
+
+SELECT * FROM contaduria;
+
+--Tabla Ambiental TABLA 4 DE LAS CARRERAS--
+CREATE TABLE ambiental(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number (2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Ambiental--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosAmbiental
+    (aIdA in number default 0 || null, 
+    aMatriculaA in number default  0  , 
+    aNombreA in varchar2 default 'Nombre'  , 
+    aApellidoA in varchar2 default 'Apellidos' ,
+    aGrupoA in varchar2 default 'Grupo' ,
+    aSemestresA in number default 0,
+    aEdificioA in varchar2 default '#') 
+as
+begin
+    insert into ambiental values (aIdA, aMatriculaA, aNombreA, aApellidoA, aGrupoA, aSemestresA, aEdificioA);
+end;
+
+EXECUTE paInsertAlumnosAmbiental;
+EXECUTE paInsertAlumnosAmbiental (3, 0000000000, 'zsfnt swa', 'dh fw roas bywcve','3bt', 8 ,'H');
+
+SELECT * FROM ambiental;
+
+--Tabla Administracion TABLA 5 DE LAS CARRERAS--
+CREATE TABLE administracion(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupAd NVARCHAR2(10),
+    semestreAD number (2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Administracion--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosAdministracion
+    (aIdAd in number default 0 || null, 
+    aMatriculaAd in number default  0  , 
+    aNombreAd in varchar2 default 'Nombre'  , 
+    aApellidoAd in varchar2 default 'Apellidos' ,
+    aGrupoAd in varchar2 default 'Grupo' ,
+    aSemestreAD in number default 0,
+    aEdificioAd in varchar2 default '#') 
+as
+begin
+    insert into administracion values (aIdAd, aMatriculaAd, aNombreAd, aApellidoAd, aGrupoAd,aSemestreAD, aEdificioAd);
+end;
+
+EXECUTE paInsertAlumnosAdministracion;
+EXECUTE paInsertAlumnosAdministracion (1, 0000000000, 'ewfcccsv', 'rntbrwgbw','4vtey',6,'D');
+
+SELECT * FROM administracion;
+
+--Tabla Automotriz TABLA 6 DE LAS CARRERAS--
+CREATE TABLE automotriz(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Automotriz--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosAutomotriz
+    (aIdAu in number default 0 || null, 
+    aMatriculaAu in number default  0  , 
+    aNombreAu in varchar2 default 'Nombre'  , 
+    aApellidoAu in varchar2 default 'Apellidos' ,
+    aGrupoAu in varchar2 default 'Grupo' ,
+    aSemestreAu in number default 0,
+    aEdificioAu in varchar2 default '#') 
+as
+begin
+    insert into automotriz values (aIdAu, aMatriculaAu, aNombreAu, aApellidoAu, aGrupoAu,aSemestreAu, aEdificioAu);
+end;
+
+EXECUTE paInsertAlumnosAutomotriz;
+EXECUTE paInsertAlumnosAutomotriz (1, 0000000000, 'vesrvdfv', 'abfdgnbad', '4fvfzsgb',4, 'F');
+
+SELECT * FROM automotriz;
+
+--Tabla TICs TABLA 7 DE LAS CARRERAS--
+CREATE TABLE tics(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Tics--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosTics
+    (aIdT in number default 0 || null, 
+    aMatriculaT in number default  0  , 
+    aNombreT in varchar2 default 'Nombre'  , 
+    aApellidoT in varchar2 default 'Apellidos' ,
+    aGrupoT in varchar2 default 'Grupo' ,
+    aSemestreT in number default 0,
+    aEdificioT in varchar2 default '#') 
+as
+begin
+    insert into tics values (aIdT, aMatriculaT, aNombreT, aApellidoT, aGrupoT,aSemestreT, aEdificioT);
+end;
+
+EXECUTE paInsertAlumnosTics;
+EXECUTE paInsertAlumnosTics (1, 0000000000, 'rqetbdvf', 'adfvdab', '5q3ga',2, 'A');
+
+SELECT * FROM tics;
+
+--Tabla Industrial TABLA 8 DE LAS CARRERAS--
+CREATE TABLE industrial(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Industrial--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosIndustrial
+    (aIdI in number default 0 || null, 
+    aMatriculaI in number default  0  , 
+    aNombreI in varchar2 default 'Nombre'  , 
+    aApellidoI in varchar2 default 'Apellidos' ,
+    aGrupoI in varchar2 default 'Grupo' ,
+    aSemestreI in number default 0,
+    aEdificioI in varchar2 default '#') 
+as
+begin
+    insert into industrial values (aIdI, aMatriculaI, aNombreI, aApellidoI, aGrupoI,aSemestreI, aEdificioI);
+end;
+
+EXECUTE paInsertAlumnosIndustrial;
+EXECUTE paInsertAlumnosIndustrial (1, 0000000000, '.uoiyuk,ym', 'WRVSRBDFV','7hbvd',4,'F');
+
+SELECT * FROM industrial;
+
+--Tabla Energias Renovables TABLA 9 DE LAS CARRERAS--
+CREATE TABLE energias(
+    id NUMBER(6),
+    matricula NUMBER(12),
+    nombre NVARCHAR2(50),
+    apellido NVARCHAR2(100),
+    grupo NVARCHAR2(10),
+    semestre number(2),
+    edificio NVARCHAR2(3)
+);
+
+        --Procedimiento Almacenado para insertar datos de los alumnos de Energias Renovables--
+CREATE OR REPLACE PROCEDURE paInsertAlumnosEnergias
+    (aIdE in number default 0 || null, 
+    aMatriculaE in number default  0  , 
+    aNombreE in varchar2 default 'Nombre'  , 
+    aApellidoE in varchar2 default 'Apellidos' ,
+    aGrupoE in varchar2 default 'Grupo' ,
+    aSemestreE in number default 0,
+    aEdificioE in varchar2 default '#') 
+as
+begin
+    insert into energias values (aIdE, aMatriculaE, aNombreE, aApellidoE, aGrupoE,aSemestreE, aEdificioE);
+end;
+
+EXECUTE paInsertAlumnosEnergias;
+EXECUTE paInsertAlumnosEnergias (1, 0000000000, ',umytnbwra', 'wrb wrb','4qafv',6,'I');
+
+SELECT * FROM energias;
+
+            --Intento de JOINS--
+SELECT  s.matricula, s.nombre, s.apellido, s.grupo, s.semestre,
+        g.matricula, g.nombre, g.apellido, g.grupo, g.semestre,
+        c.matricula, c.nombre, c.apellido, c.grupo, c.semestre,
+        a.matricula, a.nombre, a.apellido, a.grupo, a.semestre,
+        n.matricula, n.nombre, n.apellido, n.grupo, n.semestre,
+        z.matricula, z.nombre, z.apellido, z.grupo, z.semestre,
+        t.matricula, t.nombre, t.apellido, t.grupo, t.semestre,
+        e.matricula, e.nombre, e.apellido, e.grupo, e.semestre,
+        i.matricula, i.nombre, i.apellido, i.grupo, i.semestre
+from sistemas s inner join contaduria c on s.semestre = c.semestre 
+                inner join gastronomia g on s.semestre = g.semestre
+                inner join ambiental a on s.semestre = a.semestre
+                inner join administracion n on s.semestre = n.semestre
+                inner join automotriz z on s.semestre = z.semestre
+                inner join tics t on s.semestre = t.semestre
+                inner join energias g on s.semestre = e.semestre
+                inner join industrial i on s.semestre = i.semestre;
+                
+SELECT s.matricula, s.nombre, s.apellido , s.grupo, s.semestre,
+        g.matricula, g.nombre, g.apellido, g.grupo, g.semestre,
+        c.matricula, c.nombre, c.apellido , c.grupo, c.semestre 
+from sistemas s inner join contaduria c on s.semestre = c.semestre 
+                inner join gastronomia g on c.semestre = g.semestre where s.semestre = 6 and g.semestre = 6 and c.semestre = 6;
+
+Select matricula, nombre, apellidoPaterno,apellidoMaterno, grupo, carrera from alumnosTesoem where semestre = 6;
+
+Select matricula, nombre, grupo from sistemas s, gastronomia g,contaduria c where s.semestre = 6 or g.semestre =6 or c.semestre = 6;
+
+--Ejercicio 3 FUNCION DE LA BECA--
+
+CREATE OR REPLACE FUNCTION beca(promedio NUMBER) 
+    RETURN NVARCHAR2
+    IS resultado NVARCHAR2(50);
+        calificacion NUMBER(5);
+    BEGIN
+        calificacion:=promedio;
+        resultado:='';
+    IF calificacion>=85 THEN
+        resultado:='Merecedor a beca';
+    ELSE
+        resultado:='No merecedor a beca';
+    END IF;
+    RETURN resultado;
+END beca;  
+
+select matricula, nombre, promedio, beca(promedio) from alumnostesoem;
